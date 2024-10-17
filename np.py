@@ -25,7 +25,7 @@ def leer_datos_csv_sola(archivo):
                 try:
                     fecha_str = fila[2]  # La fecha y hora están en la tercera columna
                     temperatura = float(fila[3].replace(',', '.'))  # Columna 4 para temperatura (Lufttemperatur)
-                    presion = float(fila[4].replace(',', '.'))  # Columna 5 para presión (Lufttrykk i havnivå)
+                    presion = float(fila[4].replace(',', '.'))   # Columna 5 para presión (Lufttrykk i havnivå)
                     
                     # Parsear la fecha según el formato DD.MM.AAAA HH:MM
                     fecha = datetime.strptime(fecha_str, '%d.%m.%Y %H:%M')
@@ -58,7 +58,7 @@ def leer_datos_csv_local(archivo):
             for fila in lector_csv:
                 try:
                     fecha_str = fila[0]  # La fecha y hora están en la primera columna
-                    temperatura = float(fila[4].replace(',', '.'))  # Columna 5 para temperatura
+                    temperatura = float(fila[4].replace(',', '.'))   # Columna 5 para temperatura
                     presion = float(fila[2].replace(',', '.')) * 10 # Columna 3 para presión (bar a hPa)
                     
                     # Parsear la fecha según el formato MM.DD.AAAA HH:MM
@@ -122,8 +122,8 @@ else:
     ax2.legend(loc='upper left')
     ax2.grid(True)
     
-    ax2.set_xlim([min(fechas_sola + fechas_local), max(fechas_sola + fechas_local)])  # Limitar el tiempo a los datos disponibles
-    ax2.set_ylim([min(min(pres_sola), min(pres_local)) * 0.98, max(max(pres_sola), max(pres_local)) * 1.02])  # Ajustar los valores de presión para que no sean tan grandes
+    """ax2.set_xlim([min(fechas_sola + fechas_local), max(fechas_sola + fechas_local)])  # Limitar el tiempo a los datos disponibles
+    ax2.set_ylim([min(min(pres_sola), min(pres_local)) * 0.98, max(max(pres_sola), max(pres_local)) *1.02])  # Ajustar los valores de presión para que no sean tan grandes"""
     
     
     ax2.set_xticklabels(fechas_sola, rotation=45)
